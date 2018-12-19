@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
+Slack : 15.161
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'CLOCK3_50'
+Slack : 16.345
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK3_50'
+Slack : 0.175
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.827
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK3_50'
+Slack : 8.861
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.154
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
+Slack : 15.194
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'CLOCK3_50'
+Slack : 16.297
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK3_50'
+Slack : 0.160
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.883
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK3_50'
+Slack : 8.814
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.264
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
+Slack : 17.608
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'CLOCK3_50'
+Slack : 18.039
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'CLOCK3_50'
+Slack : 0.030
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
+Slack : 0.303
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK3_50'
+Slack : 8.770
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.097
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
+Slack : 17.815
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'CLOCK3_50'
+Slack : 18.183
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'CLOCK3_50'
+Slack : 0.010
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
+Slack : 0.294
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK3_50'
+Slack : 8.737
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.059
+TNS   : 0.000
+
+------------------------------------------------------------

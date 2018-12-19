@@ -1,0 +1,561 @@
+ -- Copyright (C) 1991-2013 Altera Corporation
+ -- Your use of Altera Corporation's design tools, logic functions 
+ -- and other software and tools, and its AMPP partner logic 
+ -- functions, and any output files from any of the foregoing 
+ -- (including device programming or simulation files), and any 
+ -- associated documentation or information are expressly subject 
+ -- to the terms and conditions of the Altera Program License 
+ -- Subscription Agreement, Altera MegaCore Function License 
+ -- Agreement, or other applicable license agreement, including, 
+ -- without limitation, that your use is for the sole purpose of 
+ -- programming logic devices manufactured by Altera and sold by 
+ -- Altera or its authorized distributors.  Please refer to the 
+ -- applicable agreement for further details.
+ -- 
+ -- This is a Quartus II output file. It is for reporting purposes only, and is
+ -- not intended for use as a Quartus II input file. This file cannot be used
+ -- to make Quartus II pin assignments - for instructions on how to make pin
+ -- assignments, please see Quartus II help.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- NC            : No Connect. This pin has no internal connection to the device.
+ -- DNU           : Do Not Use. This pin MUST NOT be connected.
+ -- VCCPGM        : Dedicated power pin for configuration, which MUST be connected to 1.8V, 2.5V, 3.0V or 3.3V depending on the requirements of the configuration device.
+ -- VCCINT        : Dedicated power pin, which MUST be connected to VCC  (1.1V).
+ -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
+ --                 of its bank.
+ --					Bank 2A:		3.3V
+ --					Bank 3A:		3.3V
+ --					Bank 3B:		3.3V
+ --					Bank 4A:		3.3V
+ --					Bank 5A:		2.5V
+ --					Bank 5B:		2.5V
+ --					Bank 7A:		3.3V
+ --					Bank 8A:	3.3V
+ -- RREF          : External reference resistor for the quad, MUST be connected to
+ --                 GND via a 2k Ohm resistor.
+ -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
+ --					It can also be used to report unused dedicated pins. The connection
+ --					on the board for unused dedicated pins depends on whether this will
+ --					be used in a future design. One example is device migration. When
+ --					using device migration, refer to the device pin-tables. If it is a
+ --					GND pin in the pin table or if it will not be used in a future design
+ --					for another purpose the it MUST be connected to GND. If it is an unused
+ --					dedicated pin, then it can be connected to a valid signal on the board
+ --					(low, high, or toggling) if that signal is required for a different
+ --					revision of the design.
+ -- GND+          : Unused input pin. It can also be used to report unused dual-purpose pins.
+ --					This pin should be connected to GND. It may also be connected  to a
+ --					valid signal  on the board  (low, high, or toggling)  if that signal
+ --					is required for a different revision of the design.
+ -- GND*          : Unused  I/O  pin. Connect each pin marked GND* directly to GND
+ --           	    or leave it unconnected.
+ -- RESERVED      : Unused I/O pin, which MUST be left unconnected.
+ -- RESERVED_INPUT    : Pin is tri-stated and should be connected to the board.
+ -- RESERVED_INPUT_WITH_WEAK_PULLUP    : Pin is tri-stated with internal weak pull-up resistor.
+ -- RESERVED_INPUT_WITH_BUS_HOLD       : Pin is tri-stated with bus-hold circuitry.
+ -- RESERVED_OUTPUT_DRIVEN_HIGH        : Pin is output driven high.
+ -- GXB_GND*      : Unused GXB Receiver or dedicated reference clock pin. This pin
+ --                 must be connected to GXB_GND through a 10k Ohm resistor.
+ -- GXB_NC        : Unused GXB Transmitter or dedicated clock output pin. This pin
+ --                 must not be connected.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- Pin directions (input, output or bidir) are based on device operating in user mode.
+ ---------------------------------------------------------------------------------
+
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+CHIP  "CAD961Test"  ASSIGNED TO AN: 5CEBA4F23C7
+
+Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
+-------------------------------------------------------------------------------------------------------------
+GND                          : A1        :        :                   :         :           :                
+MSEL2                        : A2        : input  :                   :         : 9A        :                
+VCCBAT                       : A3        : power  :                   : 1.2V    :           :                
+nCONFIG                      : A4        : input  :                   :         : 9A        :                
+VGA_R[3]                     : A5        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VCCIO8A                      : A6        : power  :                   : 3.3V    : 8A        :                
+VGA_B[3]                     : A7        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VGA_B[2]                     : A8        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VGA_R[0]                     : A9        : output : 3.3-V LVTTL       :         : 8A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : A10       :        :                   :         : 8A        :                
+GND                          : A11       : gnd    :                   :         :           :                
+MyLCDLT24_ADC_DOUT           : A12       : input  : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_ADC_DCLK           : A13       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_D[11]              : A14       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_D[8]               : A15       : output : 3.3-V LVTTL       :         : 7A        : Y              
+VCCIO7A                      : A16       : power  :                   : 3.3V    : 7A        :                
+NC                           : A17       :        :                   :         :           :                
+NC                           : A18       :        :                   :         :           :                
+NC                           : A19       :        :                   :         :           :                
+NC                           : A20       :        :                   :         :           :                
+GND                          : A21       : gnd    :                   :         :           :                
+NC                           : A22       :        :                   :         :           :                
+LEDR[1]                      : AA1       : output : 3.3-V LVTTL       :         : 2A        : Y              
+LEDR[0]                      : AA2       : output : 3.3-V LVTTL       :         : 2A        : Y              
+GND                          : AA3       : gnd    :                   :         :           :                
+GND                          : AA4       : gnd    :                   :         :           :                
+AS_DATA2, DATA2              : AA5       : input  :                   :         : 3A        :                
+GND                          : AA6       : gnd    :                   :         :           :                
+DRAM_DQ[11]                  : AA7       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[10]                  : AA8       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[8]                   : AA9       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+HEX2[2]                      : AA10      : output : 3.3-V LVTTL       :         : 3B        : Y              
+GND                          : AA11      : gnd    :                   :         :           :                
+DRAM_DQ[7]                   : AA12      : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA13      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA14      :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AA15      :        :                   :         : 4A        :                
+VCCIO4A                      : AA16      : power  :                   : 3.3V    : 4A        :                
+HEX1[5]                      : AA17      : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX1[3]                      : AA18      : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX1[2]                      : AA19      : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX1[0]                      : AA20      : output : 3.3-V LVTTL       :         : 4A        : Y              
+VCCIO4A                      : AA21      : power  :                   : 3.3V    : 4A        :                
+HEX0[6]                      : AA22      : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : AB1       : gnd    :                   :         :           :                
+GND                          : AB2       : gnd    :                   :         :           :                
+AS_DATA1, DATA1              : AB3       : input  :                   :         : 3A        :                
+AS_DATA0, ASDO, DATA0        : AB4       : input  :                   :         : 3A        :                
+DRAM_WE_N                    : AB5       : output : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_RAS_N                   : AB6       : output : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_BA[1]                   : AB7       : output : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[9]                   : AB8       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+GND                          : AB9       : gnd    :                   :         :           :                
+DRAM_ADDR[5]                 : AB10      : output : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_CLK                     : AB11      : output : 3.3-V LVTTL       :         : 3B        : Y              
+Switch[8]                    : AB12      : input  : 2.5 V             :         : 4A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB13      :        :                   :         : 4A        :                
+GND                          : AB14      : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : AB15      :        :                   :         : 4A        :                
+VREFB4AN0                    : AB16      : power  :                   :         : 4A        :                
+HEX2[1]                      : AB17      : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX1[4]                      : AB18      : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : AB19      : gnd    :                   :         :           :                
+HEX1[1]                      : AB20      : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX2[6]                      : AB21      : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX2[5]                      : AB22      : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : B1        : gnd    :                   :         :           :                
+GND                          : B2        : gnd    :                   :         :           :                
+DNU                          : B3        :        :                   :         :           :                
+DNU                          : B4        :        :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : B5        :        :                   :         : 8A        :                
+VGA_B[0]                     : B6        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VGA_B[1]                     : B7        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VREFB8AN0                    : B8        : power  :                   :         : 8A        :                
+GND                          : B9        : gnd    :                   :         :           :                
+VGA_R[1]                     : B10       : output : 3.3-V LVTTL       :         : 8A        : Y              
+SD_CMD                       : B11       : bidir  : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_ADC_DIN            : B12       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_D[3]               : B13       : output : 3.3-V LVTTL       :         : 7A        : Y              
+GND                          : B14       : gnd    :                   :         :           :                
+MyLCDLT24_D[12]              : B15       : output : 3.3-V LVTTL       :         : 7A        : Y              
+Switch[6]                    : B16       : input  : 2.5 V             :         : 7A        : N              
+NC                           : B17       :        :                   :         :           :                
+NC                           : B18       :        :                   :         :           :                
+VCCIO7A                      : B19       : power  :                   : 3.3V    : 7A        :                
+NC                           : B20       :        :                   :         :           :                
+NC                           : B21       :        :                   :         :           :                
+NC                           : B22       :        :                   :         :           :                
+HEX5[4]                      : C1        : output : 3.3-V LVTTL       :         : 2A        : Y              
+HEX5[5]                      : C2        : output : 3.3-V LVTTL       :         : 2A        : Y              
+GND                          : C3        : gnd    :                   :         :           :                
+GND                          : C4        : gnd    :                   :         :           :                
+GND                          : C5        :        :                   :         : 9A        :                
+Switch[4]                    : C6        : input  : 2.5 V             :         : 8A        : N              
+VCCIO8A                      : C7        : power  :                   : 3.3V    : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : C8        :        :                   :         : 8A        :                
+VGA_R[2]                     : C9        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VCCPD7A8A                    : C10       : power  :                   : 3.3V    :           :                
+SD_DATA[3]                   : C11       : bidir  : 3.3-V LVTTL       :         : 7A        : Y              
+VCCIO7A                      : C12       : power  :                   : 3.3V    : 7A        :                
+MyLCDLT24_D[2]               : C13       : output : 3.3-V LVTTL       :         : 7A        : Y              
+VREFB7AN0                    : C14       : power  :                   :         : 7A        :                
+MyLCDLT24_D[13]              : C15       : output : 3.3-V LVTTL       :         : 7A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : C16       :        :                   :         : 7A        :                
+GND                          : C17       : gnd    :                   :         :           :                
+NC                           : C18       :        :                   :         :           :                
+NC                           : C19       :        :                   :         :           :                
+NC                           : C20       :        :                   :         :           :                
+NC                           : C21       :        :                   :         :           :                
+VCCIO7A                      : C22       : power  :                   : 3.3V    : 7A        :                
+GND                          : D1        : gnd    :                   :         :           :                
+GND                          : D2        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D3        :        :                   :         : 2A        :                
+VCCIO2A                      : D4        : power  :                   : 3.3V    : 2A        :                
+GND                          : D5        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D6        :        :                   :         : 8A        :                
+Switch[7]                    : D7        : input  : 2.5 V             :         : 8A        : N              
+VCCPD7A8A                    : D8        : power  :                   : 3.3V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D9        :        :                   :         : 8A        :                
+GND                          : D10       : gnd    :                   :         :           :                
+VCC_AUX                      : D11       : power  :                   : 2.5V    :           :                
+SD_DATA[1]                   : D12       : bidir  : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_D[1]               : D13       : output : 3.3-V LVTTL       :         : 7A        : Y              
+VCCPD7A8A                    : D14       : power  :                   : 3.3V    :           :                
+VCCIO7A                      : D15       : power  :                   : 3.3V    : 7A        :                
+VCCPD7A8A                    : D16       : power  :                   : 3.3V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : D17       :        :                   :         : 7A        :                
+VCC_AUX                      : D18       : power  :                   : 2.5V    :           :                
+NC                           : D19       :        :                   :         :           :                
+GND                          : D20       : gnd    :                   :         :           :                
+NC                           : D21       :        :                   :         :           :                
+NC                           : D22       :        :                   :         :           :                
+VCCPD1A2A                    : E1        : power  :                   : 3.3V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E2        :        :                   :         : 2A        :                
+GND                          : E3        : gnd    :                   :         :           :                
+GND                          : E4        : gnd    :                   :         :           :                
+MSEL3                        : E5        : input  :                   :         : 9A        :                
+VCC_AUX                      : E6        : power  :                   : 2.5V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E7        :        :                   :         : 8A        :                
+VCCIO8A                      : E8        : power  :                   : 3.3V    : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : E9        :        :                   :         : 8A        :                
+CLOCK3_50                    : E10       : input  : 3.3-V LVTTL       :         : 8A        : Y              
+VCCPD7A8A                    : E11       : power  :                   : 3.3V    :           :                
+SD_DATA[2]                   : E12       : bidir  : 3.3-V LVTTL       :         : 7A        : Y              
+GND                          : E13       : gnd    :                   :         :           :                
+MyLCDLT24_D[14]              : E14       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_D[15]              : E15       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_CS_N               : E16       : output : 3.3-V LVTTL       :         : 7A        : Y              
+DNU                          : E17       :        :                   :         :           :                
+VCCIO7A                      : E18       : power  :                   : 3.3V    : 7A        :                
+NC                           : E19       :        :                   :         :           :                
+NC                           : E20       :        :                   :         :           :                
+NC                           : E21       :        :                   :         :           :                
+NC                           : E22       :        :                   :         :           :                
+GND                          : F1        : gnd    :                   :         :           :                
+GND                          : F2        : gnd    :                   :         :           :                
+MSEL4                        : F3        : input  :                   :         : 9A        :                
+VCCA_FPLL                    : F4        : power  :                   : 2.5V    :           :                
+GND                          : F5        : gnd    :                   :         :           :                
+GND                          : F6        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F7        :        :                   :         : 8A        :                
+VCCPGM                       : F8        : power  :                   : 1.8V/2.5V/3.0V/3.3V :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F9        :        :                   :         : 8A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F10       :        :                   :         : 8A        :                
+VCCIO7A                      : F11       : power  :                   : 3.3V    : 7A        :                
+Switch[0]                    : F12       : input  : 2.5 V             :         : 7A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : F13       :        :                   :         : 7A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F14       :        :                   :         : 7A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : F15       :        :                   :         : 7A        :                
+GND                          : F16       : gnd    :                   :         :           :                
+GND                          : F17       :        :                   :         : 7A        :                
+NC                           : F18       :        :                   :         :           :                
+NC                           : F19       :        :                   :         :           :                
+NC                           : F20       :        :                   :         :           :                
+VCCIO7A                      : F21       : power  :                   : 3.3V    : 7A        :                
+NC                           : F22       :        :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G1        :        :                   :         : 2A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G2        :        :                   :         : 2A        :                
+GND                          : G3        : gnd    :                   :         :           :                
+GND                          : G4        : gnd    :                   :         :           :                
+nCE                          : G5        :        :                   :         : 9A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G6        :        :                   :         : 8A        :                
+VCCIO8A                      : G7        : power  :                   : 3.3V    : 8A        :                
+VGA_VS                       : G8        : output : 3.3-V LVTTL       :         : 8A        : Y              
+GND                          : G9        : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G10       :        :                   :         : 8A        :                
+MyLCDLT24_D[4]               : G11       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_RESET_N            : G12       : output : 3.3-V LVTTL       :         : 7A        : Y              
+Switch[2]                    : G13       : input  : 2.5 V             :         : 7A        : N              
+VCCIO7A                      : G14       : power  :                   : 3.3V    : 7A        :                
+Switch[1]                    : G15       : input  : 2.5 V             :         : 7A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : G16       :        :                   :         : 7A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : G17       :        :                   :         : 7A        :                
+MyLCDLT24_D[0]               : G18       : output : 3.3-V LVTTL       :         : 7A        : Y              
+GND                          : G19       : gnd    :                   :         :           :                
+NC                           : G20       :        :                   :         :           :                
+NC                           : G21       :        :                   :         :           :                
+NC                           : G22       :        :                   :         :           :                
+GND                          : H1        : gnd    :                   :         :           :                
+GND                          : H2        : gnd    :                   :         :           :                
+GND                          : H3        : gnd    :                   :         :           :                
+GND                          : H4        : gnd    :                   :         :           :                
+nSTATUS                      : H5        :        :                   :         : 9A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : H6        :        :                   :         : 8A        :                
+GND                          : H7        : gnd    :                   :         :           :                
+VGA_HS                       : H8        : output : 3.3-V LVTTL       :         : 8A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H9        :        :                   :         : 8A        :                
+MyLCDLT24_D[5]               : H10       : output : 3.3-V LVTTL       :         : 7A        : Y              
+SD_CLK                       : H11       : output : 3.3-V LVTTL       :         : 7A        : Y              
+GND                          : H12       : gnd    :                   :         :           :                
+CLOCK2_50                    : H13       : input  : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_D[7]               : H14       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_ADC_BUSY           : H15       : input  : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_ADC_PENIRQ_N       : H16       : input  : 3.3-V LVTTL       :         : 7A        : Y              
+VCCIO7A                      : H17       : power  :                   : 3.3V    : 7A        :                
+MyLCDLT24_RD_N               : H18       : output : 3.3-V LVTTL       :         : 7A        : Y              
+VCCA_FPLL                    : H19       : power  :                   : 2.5V    :           :                
+NC                           : H20       :        :                   :         :           :                
+NC                           : H21       :        :                   :         :           :                
+GND                          : H22       : gnd    :                   :         :           :                
+VCCIO2A                      : J1        : power  :                   : 3.3V    : 2A        :                
+VCCPD1A2A                    : J2        : power  :                   : 3.3V    :           :                
+GND                          : J3        : gnd    :                   :         :           :                
+VCC                          : J4        : power  :                   : 1.1V    :           :                
+GND                          : J5        : gnd    :                   :         :           :                
+MSEL1                        : J6        : input  :                   :         : 9A        :                
+VGA_G[2]                     : J7        : output : 3.3-V LVTTL       :         : 8A        : Y              
+VGA_G[3]                     : J8        : output : 3.3-V LVTTL       :         : 8A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : J9        :        :                   :         : 8A        :                
+VCC                          : J10       : power  :                   : 1.1V    :           :                
+MyLCDLT24_D[6]               : J11       : output : 3.3-V LVTTL       :         : 7A        : Y              
+VCC                          : J12       : power  :                   : 1.1V    :           :                
+MyLCDLT24_D[9]               : J13       : output : 3.3-V LVTTL       :         : 7A        : Y              
+VCC                          : J14       : power  :                   : 1.1V    :           :                
+GND                          : J15       : gnd    :                   :         :           :                
+VCC                          : J16       : power  :                   : 1.1V    :           :                
+MyLCDLT24_ADC_CS_N           : J17       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_WR_N               : J18       : output : 3.3-V LVTTL       :         : 7A        : Y              
+MyLCDLT24_RS                 : J19       : output : 3.3-V LVTTL       :         : 7A        : Y              
+GND                          : J20       : gnd    :                   :         :           :                
+NC                           : J21       :        :                   :         :           :                
+NC                           : J22       :        :                   :         :           :                
+GND                          : K1        : gnd    :                   :         :           :                
+GND                          : K2        : gnd    :                   :         :           :                
+VCC                          : K3        : power  :                   : 1.1V    :           :                
+GND                          : K4        : gnd    :                   :         :           :                
+VCC                          : K5        : power  :                   : 1.1V    :           :                
+CONF_DONE                    : K6        : bidir  :                   :         : 9A        :                
+VGA_G[1]                     : K7        : output : 3.3-V LVTTL       :         : 8A        : Y              
+GND                          : K8        : gnd    :                   :         :           :                
+SD_DATA[0]                   : K9        : bidir  : 3.3-V LVTTL       :         : 7A        : Y              
+GND                          : K10       : gnd    :                   :         :           :                
+VCC                          : K11       : power  :                   : 1.1V    :           :                
+GND                          : K12       : gnd    :                   :         :           :                
+VCC                          : K13       : power  :                   : 1.1V    :           :                
+GND                          : K14       : gnd    :                   :         :           :                
+VCC                          : K15       : power  :                   : 1.1V    :           :                
+MyLCDLT24_LCD_ON             : K16       : output : 3.3-V LVTTL       :         : 7A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : K17       :        :                   :         : 5B        :                
+VCCIO5B                      : K18       : power  :                   : 2.5V    : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K19       :        :                   :         : 7A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K20       :        :                   :         : 7A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K21       :        :                   :         : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : K22       :        :                   :         : 5B        :                
+LEDR[9]                      : L1        : output : 3.3-V LVTTL       :         : 2A        : Y              
+LEDR[8]                      : L2        : output : 3.3-V LVTTL       :         : 2A        : Y              
+GND                          : L3        : gnd    :                   :         :           :                
+VCC                          : L4        : power  :                   : 1.1V    :           :                
+GND                          : L5        : gnd    :                   :         :           :                
+MSEL0                        : L6        : input  :                   :         : 9A        :                
+VGA_G[0]                     : L7        : output : 3.3-V LVTTL       :         : 8A        : Y              
+MyLCDLT24_D[10]              : L8        : output : 3.3-V LVTTL       :         : 7A        : Y              
+DNU                          : L9        :        :                   :         :           :                
+VCC                          : L10       : power  :                   : 1.1V    :           :                
+GND                          : L11       : gnd    :                   :         :           :                
+VCC                          : L12       : power  :                   : 1.1V    :           :                
+GND                          : L13       : gnd    :                   :         :           :                
+VCC                          : L14       : power  :                   : 1.1V    :           :                
+GND                          : L15       : gnd    :                   :         :           :                
+VCC                          : L16       : power  :                   : 1.1V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L17       :        :                   :         : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L18       :        :                   :         : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L19       :        :                   :         : 5B        :                
+VREFB5BN0                    : L20       : power  :                   :         : 5B        :                
+GND                          : L21       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : L22       :        :                   :         : 5B        :                
+GND                          : M1        : gnd    :                   :         :           :                
+GND                          : M2        : gnd    :                   :         :           :                
+VCCA_FPLL                    : M3        : power  :                   : 2.5V    :           :                
+GND                          : M4        : gnd    :                   :         :           :                
+TDO                          : M5        : output :                   :         : 3A        :                
+Key[3]                       : M6        : input  : 3.3-V LVTTL       :         : 3A        : Y              
+Key[2]                       : M7        : input  : 3.3-V LVTTL       :         : 3A        : Y              
+HEX5[1]                      : M8        : output : 3.3-V LVTTL       :         : 3B        : Y              
+CLOCK_50                     : M9        : input  : 3.3-V LVTTL       :         : 3B        : Y              
+GND                          : M10       : gnd    :                   :         :           :                
+VCC                          : M11       : power  :                   : 1.1V    :           :                
+GND                          : M12       : gnd    :                   :         :           :                
+VCC                          : M13       : power  :                   : 1.1V    :           :                
+GND                          : M14       : gnd    :                   :         :           :                
+VCC                          : M15       : power  :                   : 1.1V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : M16       :        :                   :         : 5B        :                
+VCCPD5B                      : M17       : power  :                   : 2.5V    : 5B        :                
+Switch[3]                    : M18       : input  : 2.5 V             :         : 5B        : N              
+VCCIO5B                      : M19       : power  :                   : 2.5V    : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : M20       :        :                   :         : 5B        :                
+Switch[5]                    : M21       : input  : 2.5 V             :         : 5B        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : M22       :        :                   :         : 5B        :                
+LEDR[5]                      : N1        : output : 3.3-V LVTTL       :         : 2A        : Y              
+LEDR[4]                      : N2        : output : 3.3-V LVTTL       :         : 2A        : Y              
+GND                          : N3        : gnd    :                   :         :           :                
+VCC                          : N4        : power  :                   : 1.1V    :           :                
+GND                          : N5        : gnd    :                   :         :           :                
+DRAM_ADDR[4]                 : N6        : output : 3.3-V LVTTL       :         : 3A        : Y              
+GND                          : N7        : gnd    :                   :         :           :                
+DRAM_UDQM                    : N8        : output : 3.3-V LVTTL       :         : 3B        : Y              
+HEX5[0]                      : N9        : output : 3.3-V LVTTL       :         : 3B        : Y              
+VCC                          : N10       : power  :                   : 1.1V    :           :                
+GND                          : N11       : gnd    :                   :         :           :                
+VCC                          : N12       : power  :                   : 1.1V    :           :                
+GND                          : N13       : gnd    :                   :         :           :                
+VCC                          : N14       : power  :                   : 1.1V    :           :                
+GND                          : N15       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N16       :        :                   :         : 5B        :                
+GND                          : N17       : gnd    :                   :         :           :                
+VCCPD5B                      : N18       : power  :                   : 2.5V    : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N19       :        :                   :         : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N20       :        :                   :         : 5B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : N21       :        :                   :         : 5B        :                
+GND                          : N22       : gnd    :                   :         :           :                
+GND                          : P1        : gnd    :                   :         :           :                
+GND                          : P2        : gnd    :                   :         :           :                
+VCC                          : P3        : power  :                   : 1.1V    :           :                
+GND                          : P4        : gnd    :                   :         :           :                
+TMS                          : P5        : input  :                   :         : 3A        :                
+DRAM_ADDR[11]                : P6        : output : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_ADDR[7]                 : P7        : output : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_ADDR[8]                 : P8        : output : 3.3-V LVTTL       :         : 3B        : Y              
+HEX4[6]                      : P9        : output : 3.3-V LVTTL       :         : 3B        : Y              
+GND                          : P10       : gnd    :                   :         :           :                
+VCC                          : P11       : power  :                   : 1.1V    :           :                
+DRAM_ADDR[6]                 : P12       : output : 3.3-V LVTTL       :         : 3B        : Y              
+VCC                          : P13       : power  :                   : 1.1V    :           :                
+HEX5[3]                      : P14       : output : 3.3-V LVTTL       :         : 4A        : Y              
+VCC                          : P15       : power  :                   : 1.1V    :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P16       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P17       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P18       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : P19       :        :                   :         : 5A        :                
+VCCIO5A                      : P20       : power  :                   : 2.5V    : 5A        :                
+VCCPD5A                      : P21       : power  :                   : 2.5V    : 5A        :                
+RESET_N                      : P22       : input  : 3.3-V LVTTL       :         : 5A        : Y              
+VCCIO2A                      : R1        : power  :                   : 3.3V    : 2A        :                
+VCCPD1A2A                    : R2        : power  :                   : 3.3V    :           :                
+GND                          : R3        : gnd    :                   :         :           :                
+nCSO, DATA4                  : R4        : input  :                   :         : 3A        :                
+DRAM_ADDR[9]                 : R5        : output : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_CKE                     : R6        : output : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_ADDR[12]                : R7        : output : 3.3-V LVTTL       :         : 3A        : Y              
+VCCIO3B                      : R8        : power  :                   : 3.3V    : 3B        :                
+DRAM_DQ[2]                   : R9        : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[4]                   : R10       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[5]                   : R11       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[6]                   : R12       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+GND                          : R13       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R14       :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R15       :        :                   :         : 5A        :                
+Switch[9]                    : R16       : input  : 2.5 V             :         : 5A        : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : R17       :        :                   :         : 5A        :                
+VCCIO5A                      : R18       : power  :                   : 2.5V    : 5A        :                
+VCCPGM                       : R19       : power  :                   : 1.8V/2.5V/3.0V/3.3V :           :                
+VREFB5AN0                    : R20       : power  :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R21       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : R22       :        :                   :         : 5A        :                
+GND                          : T1        : gnd    :                   :         :           :                
+GND                          : T2        : gnd    :                   :         :           :                
+VCCA_FPLL                    : T3        : power  :                   : 2.5V    :           :                
+AS_DATA3, DATA3              : T4        : input  :                   :         : 3A        :                
+VCCA_FPLL                    : T5        : power  :                   : 2.5V    :           :                
+VCCIO3A                      : T6        : power  :                   : 3.3V    : 3A        :                
+DRAM_BA[0]                   : T7        : output : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_ADDR[1]                 : T8        : output : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_DQ[15]                  : T9        : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[1]                   : T10       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+VCCIO3B                      : T11       : power  :                   : 3.3V    : 3B        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T12       :        :                   :         : 4A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T13       :        :                   :         : 4A        :                
+HEX5[2]                      : T14       : output : 3.3-V LVTTL       :         : 4A        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : T15       :        :                   :         : 5A        :                
+GND                          : T16       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T17       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T18       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T19       :        :                   :         : 5A        :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T20       :        :                   :         : 5A        :                
+GND                          : T21       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : T22       :        :                   :         : 5A        :                
+LEDR[7]                      : U1        : output : 3.3-V LVTTL       :         : 2A        : Y              
+LEDR[6]                      : U2        : output : 3.3-V LVTTL       :         : 2A        : Y              
+GND                          : U3        : gnd    :                   :         :           :                
+GND                          : U4        : gnd    :                   :         :           :                
+GND                          : U5        : gnd    :                   :         :           :                
+DRAM_CS_N                    : U6        : output : 3.3-V LVTTL       :         : 3A        : Y              
+Key[0]                       : U7        : input  : 3.3-V LVTTL       :         : 3A        : Y              
+DRAM_ADDR[10]                : U8        : output : 3.3-V LVTTL       :         : 3A        : Y              
+GND                          : U9        : gnd    :                   :         :           :                
+DRAM_DQ[14]                  : U10       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_ADDR[2]                 : U11       : output : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_LDQM                    : U12       : output : 3.3-V LVTTL       :         : 3B        : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : U13       :        :                   :         : 4A        :                
+VCCIO4A                      : U14       : power  :                   : 3.3V    : 4A        :                
+HEX4[4]                      : U15       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX4[3]                      : U16       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX3[4]                      : U17       : output : 3.3-V LVTTL       :         : 4A        : Y              
+VCCA_FPLL                    : U18       : power  :                   : 2.5V    :           :                
+VCCIO4A                      : U19       : power  :                   : 3.3V    : 4A        :                
+HEX4[0]                      : U20       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX0[0]                      : U21       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX1[6]                      : U22       : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : V1        : gnd    :                   :         :           :                
+GND                          : V2        : gnd    :                   :         :           :                
+DCLK                         : V3        : bidir  :                   :         : 3A        :                
+GND                          : V4        : gnd    :                   :         :           :                
+TCK                          : V5        : input  :                   :         : 3A        :                
+DRAM_CAS_N                   : V6        : output : 3.3-V LVTTL       :         : 3A        : Y              
+GND                          : V7        : gnd    :                   :         :           :                
+VCCPGM                       : V8        : power  :                   : 1.8V/2.5V/3.0V/3.3V :           :                
+DRAM_DQ[13]                  : V9        : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[12]                  : V10       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+NC                           : V11       :        :                   :         :           :                
+GND                          : V12       : gnd    :                   :         :           :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : V13       :        :                   :         : 4A        :                
+HEX2[4]                      : V14       : output : 3.3-V LVTTL       :         : 4A        : Y              
+CLOCK4_50                    : V15       : bidir  : 3.3-V LVTTL       :         : 4A        : Y              
+HEX3[3]                      : V16       : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : V17       : gnd    :                   :         :           :                
+HEX3[5]                      : V18       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX3[6]                      : V19       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX4[2]                      : V20       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX0[1]                      : V21       : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : V22       : gnd    :                   :         :           :                
+VREFB2AN0                    : W1        : power  :                   :         : 2A        :                
+LEDR[2]                      : W2        : output : 3.3-V LVTTL       :         : 2A        : Y              
+GND                          : W3        : gnd    :                   :         :           :                
+GND                          : W4        : gnd    :                   :         :           :                
+TDI                          : W5        : input  :                   :         : 3A        :                
+VCCPD3A                      : W6        : power  :                   : 3.3V    : 3A        :                
+VCC_AUX                      : W7        : power  :                   : 2.5V    :           :                
+DRAM_ADDR[0]                 : W8        : output : 3.3-V LVTTL       :         : 3A        : Y              
+Key[1]                       : W9        : input  : 3.3-V LVTTL       :         : 3A        : Y              
+VCCIO3B                      : W10       : power  :                   : 3.3V    : 3B        :                
+VCCPD3B4A                    : W11       : power  :                   : 3.3V    :           :                
+VCCPD3B4A                    : W12       : power  :                   : 3.3V    :           :                
+VCC_AUX                      : W13       : power  :                   : 2.5V    :           :                
+VCCPD3B4A                    : W14       : power  :                   : 3.3V    :           :                
+VCCIO4A                      : W15       : power  :                   : 3.3V    : 4A        :                
+HEX3[1]                      : W16       : output : 3.3-V LVTTL       :         : 4A        : Y              
+VCCPD3B4A                    : W17       : power  :                   : 3.3V    :           :                
+VCC_AUX                      : W18       : power  :                   : 2.5V    :           :                
+HEX5[6]                      : W19       : output : 3.3-V LVTTL       :         : 4A        : Y              
+VCCIO4A                      : W20       : power  :                   : 3.3V    : 4A        :                
+HEX0[3]                      : W21       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX0[2]                      : W22       : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : Y1        : gnd    :                   :         :           :                
+GND                          : Y2        : gnd    :                   :         :           :                
+LEDR[3]                      : Y3        : output : 3.3-V LVTTL       :         : 2A        : Y              
+VCCIO2A                      : Y4        : power  :                   : 3.3V    : 2A        :                
+GND                          : Y5        : gnd    :                   :         :           :                
+NC                           : Y6        :        :                   :         :           :                
+VREFB3AN0                    : Y7        : power  :                   :         : 3A        :                
+VCCIO3A                      : Y8        : power  :                   : 3.3V    : 3A        :                
+DRAM_DQ[0]                   : Y9        : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_ADDR[3]                 : Y10       : output : 3.3-V LVTTL       :         : 3B        : Y              
+DRAM_DQ[3]                   : Y11       : bidir  : 3.3-V LVTTL       :         : 3B        : Y              
+VREFB3BN0                    : Y12       : power  :                   :         : 3B        :                
+VCCIO3B                      : Y13       : power  :                   : 3.3V    : 3B        :                
+HEX2[3]                      : Y14       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX4[5]                      : Y15       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX3[0]                      : Y16       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX3[2]                      : Y17       : output : 3.3-V LVTTL       :         : 4A        : Y              
+GND                          : Y18       : gnd    :                   :         :           :                
+HEX2[0]                      : Y19       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX4[1]                      : Y20       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX0[5]                      : Y21       : output : 3.3-V LVTTL       :         : 4A        : Y              
+HEX0[4]                      : Y22       : output : 3.3-V LVTTL       :         : 4A        : Y              
