@@ -32,17 +32,17 @@ architecture Behavioral of color_fill is
 	constant center: integer := 320;
 	
 	-- Colors pallete
-	constant Fuchsia : std_logic_vector(11 downto 0) := X"F0F";
-	constant Teal : std_logic_vector(11 downto 0) := X"088";
-	constant Olive : std_logic_vector(11 downto 0) := X"880";
-	constant Maroon : std_logic_vector(11 downto 0) := X"800";
+	constant Fuchsia : std_logic_vector(11 downto 0) := X"F0F"; -- 00
+	constant Teal : std_logic_vector(11 downto 0) := X"088";		-- 01
+	constant Olive : std_logic_vector(11 downto 0) := X"880";	-- 10
+	constant Maroon : std_logic_vector(11 downto 0) := X"800";  -- 11
 	
 	-- Square class
 	type square is 
 		record
 			square_width : integer;
 			square_height : integer;
-			color : std_logic_vector(11 downto 0);
+			color : std_logic_vector(1 downto 0);
 			-- if is_obstacle = '1' then should not be used --
 			is_obstacle : std_logic;
 		end record;
@@ -85,7 +85,14 @@ begin
 			show_matrix_col: for j in 0 to squares_size-1 loop
 									if scanlineX < matrix(i)(j).square_width*i and scanlineX > matrix(i)(j).square_width*i - matrix(i)(j).square_width then
 										if scanlineY < matrix(i)(j).square_height*j and scanlineY > matrix(i)(j).square_height*j - matrix(i)(j).square_height then
-											out_color_temp <= matrix(i)(j).color;
+											case (matrix(i)(j).color) is 
+												
+												when "00" => out_color_temp <= Fuchsia;
+												when "01" => out_color_temp <= Teal;
+												when "10" => out_color_temp <= Olive;
+												when "11" => out_color_temp <= Maroon;
+			
+											end case;
 										end if;
 									end if;
 			end loop show_matrix_col;
@@ -133,19 +140,21 @@ begin
 		
 		if column_counter = 0 then
 			current_lfsr <= LFSR_IN((2*squares_size)-1 downto 0);
-			case (current_lfsr(column_counter+1 downto column_counter)) is 
-				when "00" => matrix(row_counter)(column_counter).color <= Fuchsia;
-				when "01" => matrix(row_counter)(column_counter).color <= Teal;
-				when "10" => matrix(row_counter)(column_counter).color <= Olive;
-				when "11" => matrix(row_counter)(column_counter).color <= Maroon;
-			end case;
+			matrix(row_counter)(column_counter).color <= current_lfsr(column_counter+1 downto column_counter);
+			--case (current_lfsr(column_counter+1 downto column_counter)) is 
+			--	when "00" => matrix(row_counter)(column_counter).color <= Fuchsia;
+			--	when "01" => matrix(row_counter)(column_counter).color <= Teal;
+			--	when "10" => matrix(row_counter)(column_counter).color <= Olive;
+			--	when "11" => matrix(row_counter)(column_counter).color <= Maroon;
+			--end case;
 		else
-			case (current_lfsr(column_counter downto column_counter-1)) is 
-				when "00" => matrix(row_counter)(column_counter).color <= Fuchsia;
-				when "01" => matrix(row_counter)(column_counter).color <= Teal;
-				when "10" => matrix(row_counter)(column_counter).color <= Olive;
-				when "11" => matrix(row_counter)(column_counter).color <= Maroon;
-			end case;
+			matrix(row_counter)(column_counter).color <=current_lfsr(column_counter downto column_counter-1);
+			--case (current_lfsr(column_counter downto column_counter-1)) is 
+			--	when "00" => matrix(row_counter)(column_counter).color <= Fuchsia;
+			--	when "01" => matrix(row_counter)(column_counter).color <= Teal;
+			--	when "10" => matrix(row_counter)(column_counter).color <= Olive;
+			--	when "11" => matrix(row_counter)(column_counter).color <= Maroon;
+			--end case;
 		end if;
 		
 	end process;
