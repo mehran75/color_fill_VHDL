@@ -17,7 +17,8 @@ entity color_fill is
 			ScanlineY		: in std_logic_vector(10 downto 0);
 			LFSR_IN			: in std_logic_vector(63 downto 0);
 			Key				: in std_logic_vector(3 downto 0);
-			Switch 			: in std_LOGIC
+			Switch 			: in std_logic_vector(9 downto 0);
+			LEDR				: out std_logic_vector(9 downto 0)
 			);
 
 
@@ -27,9 +28,11 @@ end color_fill;
 architecture Behavioral of color_fill is
 	
 	-- Size parameters
-	constant s_width: integer := 51;
-	constant s_height: integer := 40;
-	constant center: integer := 320;
+	constant s_width		 : integer := 45;
+	constant s_height		 : integer := 40;
+	constant center		 : integer := 320;
+	constant margin_sides : integer := 130;
+	constant margin_up    : integer := 40;
 	
 	-- Colors pallete
 	constant Fuchsia : std_logic_vector(11 downto 0) := X"F0F"; -- 00
@@ -47,20 +50,29 @@ architecture Behavioral of color_fill is
 			is_obstacle : std_logic;
 		end record;
 		
+		
+	-- FSM --
+	type state is (idel ,ready, playing , AI, finished);
+	
 	-- Matrix of squares
 	type row_square is array (squares_size -1 downto 0) of square;
 	type matrix_square is array (squares_size -1 downto 0) of row_square;
+	
 	signal matrix : matrix_square;
+	
+	-- temp signal for colorOut  
 	signal out_color_temp : std_logic_vector(11 downto 0);
 	
 	-- Random color picker
-	signal row_counter, column_counter : integer range 0 to squares_size-1 := 0;
+	signal row_counter, column_counter : integer range squares_size downto 0 := 0;
 	signal stop_counter : std_LOGIC := '0';
 	
-	signal current_lfsr : std_logic_vector((2*squares_size) -1 downto 0) := (others=>'0');
+	signal current_lfsr : std_logic_vector((2*squares_size) -1 downto 0) := (others=>'1');
 	-- signal counter    : std_LOGIC_VECTOR(11 downto 0) := (others=>'0');
-
+	
+	
 begin
+	
 	
 	-- Key menu
 	process(scanlineX, scanlineY, matrix)
@@ -69,11 +81,11 @@ begin
 		if scanlineY > 400+s_height then
 			if scanlineX < center - 2*s_width then
 				out_color_temp <= X"FFF";	-- Background color
-			elsif scanlineX < center - s_width then
+			elsif scanlineX < center - s_width+1 then
 				out_color_temp <= Fuchsia;	-- Fuchsia
 			elsif scanlineX < center then
 				out_color_temp <= Teal;	-- Teal
-			elsif scanlineX < center + s_width then
+			elsif scanlineX < center + s_width-1 then
 				out_color_temp <= Olive;	-- Olive
 			elsif scanlineX < center + 2*s_width then
 				out_color_temp <= Maroon;	-- Maroon
@@ -83,8 +95,8 @@ begin
 		-- Display squares
 		show_matrix_row: for i in 0 to squares_size-1 loop
 			show_matrix_col: for j in 0 to squares_size-1 loop
-									if scanlineX < matrix(i)(j).square_width*i and scanlineX > matrix(i)(j).square_width*i - matrix(i)(j).square_width then
-										if scanlineY < matrix(i)(j).square_height*j and scanlineY > matrix(i)(j).square_height*j - matrix(i)(j).square_height then
+									if scanlineX < matrix(i)(j).square_width*i + margin_sides and scanlineX > matrix(i)(j).square_width*i - matrix(i)(j).square_width + margin_sides then
+										if scanlineY < matrix(i)(j).square_height*j + margin_up and scanlineY > matrix(i)(j).square_height*j - matrix(i)(j).square_height + margin_up then
 											case (matrix(i)(j).color) is 
 												
 												when "00" => out_color_temp <= Fuchsia;
@@ -100,7 +112,7 @@ begin
 	
 	end process;
 	
-	ColorOut <= out_color_temp;	-- Display
+	
 	
 
 	
@@ -129,6 +141,30 @@ begin
 	end process;
 	
 	
+	process(key) 
+	begin
+		
+		LEDR(3 downto 0) <= not key;
+	
+		--if (current_state = idel) then
+		--	if key(0) = '0' then
+			--	stop_counter <= '1';
+		--	end if;
+		--elsif current_state = ready then
+			-- state game
+		--	next_state <= playing;
+		--elsif current_state = playing then
+			-- handle game button
+		--elsif current_state = finished then
+			-- show result
+		--end if;
+	
+	end process;
+	
+	
+	
+	
+	-- randomly initialize colors
 	process(column_counter, row_counter)
 	begin
 	
@@ -140,23 +176,14 @@ begin
 		
 		if column_counter = 0 then
 			current_lfsr <= LFSR_IN((2*squares_size)-1 downto 0);
-			matrix(row_counter)(column_counter).color <= current_lfsr(column_counter+1 downto column_counter);
-			--case (current_lfsr(column_counter+1 downto column_counter)) is 
-			--	when "00" => matrix(row_counter)(column_counter).color <= Fuchsia;
-			--	when "01" => matrix(row_counter)(column_counter).color <= Teal;
-			--	when "10" => matrix(row_counter)(column_counter).color <= Olive;
-			--	when "11" => matrix(row_counter)(column_counter).color <= Maroon;
-			--end case;
+			matrix(row_counter)(column_counter).color <= LFSR_IN(1 downto 0);--current_lfsr(column_counter+1 downto column_counter);
 		else
 			matrix(row_counter)(column_counter).color <=current_lfsr(column_counter downto column_counter-1);
-			--case (current_lfsr(column_counter downto column_counter-1)) is 
-			--	when "00" => matrix(row_counter)(column_counter).color <= Fuchsia;
-			--	when "01" => matrix(row_counter)(column_counter).color <= Teal;
-			--	when "10" => matrix(row_counter)(column_counter).color <= Olive;
-			--	when "11" => matrix(row_counter)(column_counter).color <= Maroon;
-			--end case;
 		end if;
 		
 	end process;
+	
+	
+	ColorOut <= out_color_temp;	-- Display
 	
 end Behavioral;
