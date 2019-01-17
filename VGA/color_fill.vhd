@@ -1,7 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 
@@ -15,7 +14,7 @@ entity color_fill is
 			ColorOut			: out std_logic_vector(11 downto 0); -- RED & GREEN & BLUE
 			ScanlineX		: in std_logic_vector(10 downto 0);
 			ScanlineY		: in std_logic_vector(10 downto 0);
-			LFSR_IN			: in std_logic_vector(63 downto 0);
+			LFSR_IN			: in std_logic_vector(31 downto 0);
 			Key				: in std_logic_vector(3 downto 0);
 			Switch 			: in std_logic_vector(9 downto 0);
 			LEDR				: out std_logic_vector(9 downto 0)
@@ -26,6 +25,30 @@ end color_fill;
 
 
 architecture Behavioral of color_fill is
+
+	-- Stack component --
+	constant data_size : integer := 8;
+	component Stack
+		port(
+			push		    : in STD_LOGIC;
+			 pop 		 	 : in STD_LOGIC;
+			 en 		 	 : in STD_LOGIC;
+			 data_in 	 : in STD_LOGIC_VECTOR(data_size-1 downto 0);
+			 data_out	 : out STD_LOGIC_VECTOR(data_size-1 downto 0);
+			 clk 		 	 : in STD_logic;							  
+			 reset 		 : in STD_logic;
+			 STACK_FULL  : out STD_LOGIC;						
+			 STACK_EMPTY : out STD_LOGIC
+		);
+		
+	end component;
+	
+	signal stack_in, stack_out 	 : std_LOGIC_VECTOR(data_size-1 downto 0);
+	signal stack_push,stack_pop	 : std_LOGIC;
+	signal stack_enable 			 	 : std_LOGIC;
+	signal stack_reset			    : std_LOGIC;
+	signal stack_full, stack_empty : std_LOGIC;
+
 	
 	-- Size parameters
 	constant s_width		 : integer := 45;

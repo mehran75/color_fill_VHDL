@@ -2,7 +2,7 @@ library ieee;
   use ieee.std_logic_1164.all;
 
 entity LFSR is
-	generic (bit_size : integer := 63);
+	generic (bit_size : integer := 31);
   port (
     reset   : in  std_logic;
     clk     : in  std_logic; 
