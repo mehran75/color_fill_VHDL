@@ -86,7 +86,9 @@ architecture Behavioral of color_fill is
 	
 	-- Matrix and other stuff
 	signal selected_color : std_logic_vector(1 downto 0);
-	signal state_complete_flag : std_LOGIC := '0';
+	signal origin_color : std_logic_vector(1 downto 0);
+	signal popped_vector : std_LOGIC_VECTOR(data_size-1 downto 0);
+	signal i, j : integer := 0;
 	
 	signal algo_current_state : dfs_state := idle_state;
 	signal algo_next_state : dfs_state := idle_state;
@@ -102,6 +104,7 @@ architecture Behavioral of color_fill is
 	
 	signal current_lfsr : std_logic_vector((2*squares_size) -1 downto 0) := (others=>'1');
 	-- signal counter    : std_LOGIC_VECTOR(11 downto 0) := (others=>'0');
+	
 	
 	-- push in stack
 	procedure push_in_stack(i : in integer; j: in integer) is
@@ -176,7 +179,7 @@ architecture Behavioral of color_fill is
 		
 		
 		-- Mehran fucking random selector
-		process(CLK_50MHz, key, RESET)
+		process(CLK_50MHz, RESET)
 		begin
 			if reset = '1' then
 				stop_counter <= '0';
@@ -199,23 +202,67 @@ architecture Behavioral of color_fill is
 		
 		
 		-- Initilize pixels
-		process(column_counter, row_counter,clk_50MHz)
+		process(column_counter, row_counter, clk_50MHz, stop_counter, algo_current_state)
 		begin
-		
-			current_lfsr <= current_lfsr;
-			
-			matrix(row_counter)(column_counter).square_width <= s_width;
-			matrix(row_counter)(column_counter).square_height <= s_height;
-			matrix(row_counter)(column_counter).is_obstacle <= '0';
-			
-			if rising_edge(clk_50MHz) then
-				if column_counter = 0 then
-					current_lfsr <= LFSR_IN((2*squares_size)-1 downto 0);
-					matrix(row_counter)(column_counter).color <= LFSR_IN(1 downto 0);--current_lfsr(column_counter+1 downto column_counter);
-				else
-					matrix(row_counter)(column_counter).color <= current_lfsr(column_counter downto column_counter-1);
+			if stop_counter = '0' then -- initilize game with random colors
+				current_lfsr <= current_lfsr;
+				
+				matrix(row_counter)(column_counter).square_width <= s_width;
+				matrix(row_counter)(column_counter).square_height <= s_height;
+				matrix(row_counter)(column_counter).is_obstacle <= '0';
+				
+				if rising_edge(clk_50MHz) then
+					if column_counter = 0 then
+						current_lfsr <= LFSR_IN((2*squares_size)-1 downto 0);
+						matrix(row_counter)(column_counter).color <= LFSR_IN(1 downto 0);--current_lfsr(column_counter+1 downto column_counter);
+					else
+						matrix(row_counter)(column_counter).color <= current_lfsr(column_counter downto column_counter-1);
+					end if;
 				end if;
+			else								-- do the game
+				case algo_current_state is
+					when origin_state => matrix(0)(0).color <= selected_color;
+												-- Right
+												if matrix(0)(1).color = origin_color then
+													push_in_stack(0, 1);
+												end if;
+												-- Bottom
+												--if matrix(1)(0).color = origin_color then
+													--push_in_stack(1, 0);
+												--end if;
+					when pop_state => popped_vector <= pop_from_stack;
+											i <= conv_integer(popped_vector(7 downto 4));
+											j <= conv_integer(popped_vector(3 downto 0));
+											
+											
+					when top_state => matrix(i)(j).color <= selected_color;
+											if not (i = 0) then 
+												if matrix(i-1)(j).color = origin_color then
+													push_in_stack(i-1,j);
+												end if;
+											end if;
+											
+					when right_state => if not (j = squares_size -1) then 
+												if matrix(i)(j+1).color = origin_color then
+													push_in_stack(i,j+1);
+												end if;
+											end if;
+											
+					when bottom_state => if not (i = squares_size -1) then 
+												if matrix(i+1)(j).color = origin_color then
+													push_in_stack(i+1,j);
+												end if;
+											end if;
+											
+					when left_state => if not (j = 0) then 
+												if matrix(i)(j-1).color = origin_color then
+													push_in_stack(i,j-1);
+												end if;
+											end if;
+					when others => null;								
+				end case;
 			end if;
+			
 			
 		end process;
 		
@@ -233,17 +280,27 @@ architecture Behavioral of color_fill is
 			case algo_current_state is
 			
 					-- Check that a key is pushed
-					when idle_state => algo_next_state <= origin_state;
-												case key is
-													when "1000" => selected_color <= "00";
-													when "0100" => selected_color <= "01";
-													when "0010" => selected_color <= "10";
-													when "0001" => selected_color <= "11";
-													when others => algo_next_state <= algo_next_state;
-												end case;
+					when idle_state => 
+											origin_color <= matrix(0)(0).color;
+											if key(3) = '0' then
+												selected_color <= "00";
+												algo_next_state <= origin_state;
+											end if;
+											if key(2) = '0' then
+												selected_color <= "01";
+												algo_next_state <= origin_state;
+											end if;
+											if key(1) = '0' then
+												selected_color <= "10";
+												algo_next_state <= origin_state;
+											end if;
+											if key(0) = '0' then
+												selected_color <= "11";
+												algo_next_state <= origin_state;
+											end if;
 					-- Check origin (0,0)
 					when origin_state => if stack_empty = '0' then algo_next_state <= pop_state;
-													else algo_next_state <= algo_next_state;
+													else algo_next_state <= idle_state;
 												end if;
 					-- Pop from stack (if it's not empty)
 					when pop_state => if stack_empty = '1' then algo_next_state <= idle_state;
@@ -254,11 +311,27 @@ architecture Behavioral of color_fill is
 					when right_state => algo_next_state <= bottom_state;
 					when bottom_state => algo_next_state <= left_state;
 					when left_state => algo_next_state <= pop_state;
+					
 					when others => algo_next_state <= algo_next_state;
 			end case;
 				
 		end process;
 		
+		
+		
+		-- update algo_next_state
+		process (clk_50MHz, reset)
+		begin
+			if reset = '1' then 
+				algo_current_state <= idle_state;
+			elsif falling_edge(clk_50MHz) then
+				algo_current_state <= algo_next_state;
+			end if;
+		end process;
+		
+		
+		-- update matrix 
+
 		
 		ColorOut <= out_color_temp;	-- Display
 		
