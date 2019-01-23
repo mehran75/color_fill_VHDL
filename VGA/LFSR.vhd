@@ -1,30 +1,39 @@
-library ieee;    
-  use ieee.std_logic_1164.all;
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
 
-entity LFSR is
-	generic (bit_size : integer := 31);
-  port (
-    reset   : in  std_logic;
-    clk     : in  std_logic; 
-    count   : out std_logic_vector (bit_size downto 0) -- lfsr output
-  );
-end entity;
+entity LFSR64 is
+	Port(
+		Resetn: in std_logic;
+		Clk: in std_logic;
+		LFSR64Out: out std_logic_vector(63 downto 0)
+	);
+end LFSR64;
 
-architecture rtl of LFSR is
-  signal count_i        : std_logic_vector (bit_size downto 0); 
-  signal feedback     : std_logic;
+--}} End of automatically maintained section
+
+architecture LFSR64 of LFSR64 is
+
+signal pseudo_rand : std_logic_vector(63 downto 0);
 
 begin
-  feedback <= not(count_i(bit_size) xor count_i(bit_size-1));        -- LFSR size 4
 
-  process (reset, clk) 
-  begin
-    if (reset = '1') then
-      count_i <= (others=>'0');
-    elsif (rising_edge(clk)) then
-      count_i <= count_i(bit_size-1 downto 0) & feedback;
-    end if;
-  end process;
-  count <= count_i;
+	-- enter your statements here --
+	process(clk)
+		-- maximal length 64-bit xnor LFSR
+		function lfsr64func(x : std_logic_vector(63 downto 0)) return std_logic_vector is
+		begin
+			return x(62 downto 0) & not(x(0) xor x(1) xor x(3) xor x(4));
+		end function;
+	begin
+		if rising_edge(clk) then
+			if resetn='0' then
+				pseudo_rand <= (others => '0');
+			else
+				pseudo_rand <= lfsr64func(pseudo_rand);
+			end if;
+		end if;
+	end process;
+	
+	LFSR64Out <= pseudo_rand;
 
-end architecture;
+end LFSR64;
