@@ -33,14 +33,14 @@ entity memory is
 			 Addr_Width :integer := 8);
 	 port(
 		 clk : in STD_LOGIC;
-		 cs1 : in STD_LOGIC;
-		 cs2 : in STD_LOGIC;
-		 we1 : in STD_LOGIC;
-		 we2 : in STD_LOGIC;
-		 addr1 : in STD_LOGIC_VECTOR(Addr_Width -1 downto 0);
-		 addr2 : in STD_LOGIC_VECTOR(Addr_Width -1 downto 0);
-		 data1 : inout STD_LOGIC_VECTOR(Data_width -1 downto 0);
-		 data2 : inout STD_LOGIC_VECTOR(Data_width -1 downto 0)					 			 		
+		 cs : in STD_LOGIC;
+		 --cs2 : in STD_LOGIC;
+		 we : in STD_LOGIC;
+		 --we2 : in STD_LOGIC;
+		 addr : in STD_LOGIC_VECTOR(Addr_Width -1 downto 0);
+		 --addr2 : in STD_LOGIC_VECTOR(Addr_Width -1 downto 0);
+		 data_in : in STD_LOGIC_VECTOR(Data_width -1 downto 0);
+		 data_out : out STD_LOGIC_VECTOR(Data_width -1 downto 0)					 			 		
 	     );
 end memory;
 
@@ -52,7 +52,7 @@ type memory_arch is array(2**Addr_Width -1 downto 0)
  
 signal ram : memory_arch;
 
-signal data_out1,data_out2 : std_logic_vector(Data_width -1 downto 0);
+--signal data_out : std_logic_vector(Data_width -1 downto 0);
 begin
 	
 	
@@ -61,55 +61,26 @@ begin
 	begin
 		
 		if (clk'event and clk = '1') then
-			
-			
 			-- port number 1--
-			if (cs1 = '1' and we1 = '1') then
-				ram(to_integer(unsigned(addr1))) <= data1 ;			
-				
+			if (cs = '1' and we = '1') then
+				ram(to_integer(unsigned(addr))) <= data_in ;			
 			end if;
-			
-			-- port number 2--
-			if (cs2 = '1' and we2 = '1') then
-					ram(to_integer(unsigned(addr2))) <= data2 ;
-			end if;
-				
 		end if;	
 	end process; 
 	
 	
 	-- Read from port 1--
-	process(addr1,cs1,we1)
+	process(addr,cs,we)
 	begin
 		
-		if (cs1 = '1' and we1 = '0') then
-			data_out1 <= ram(to_integer(unsigned(addr1)));	  
+		if (cs = '1' and we = '0') then
+			data_out <= ram(to_integer(unsigned(addr)));	  
 		else
-			data_out1 <= (others => '0');
+			data_out <= (others => '0');
 		end if;
 		
 	end process;
 	
-	
-	-- Read from port 2--
-	process(addr2,cs2,we2)
-	begin
-		
-		
-		if (cs2 = '1' and we2 = '0') then
-			data_out2 <= ram(to_integer(unsigned(addr2)));
-		else
-			data_out2 <= (others => '0');
-		end if;
-		
-	end process;
-	
-	
-	data1 <= data_out1 when (cs1 = '1' and we1 = '0')	   
-			else (others=>'Z');
-	
-	data2 <= data_out2 when (cs2 = '1' and we2 = '0')	   
-			else (others=>'Z');
-				
+
 
 end memory;
