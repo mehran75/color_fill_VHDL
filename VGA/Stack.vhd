@@ -1,7 +1,8 @@
 
 library IEEE;
-use IEEE.STD_LOGIC_1164.all;	  
-use ieee.numeric_std.all;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.STD_LOGIC_UNSIGNED.all;
+use IEEE.numeric_std.all;
 
 entity Stack is			   
 	
@@ -46,7 +47,7 @@ architecture Stack of Stack is
 			);
 	end component;
 	
-	signal 	address: std_logic_vector(address_size-1 downto 0) := (others=>'0');
+	signal 	address, address2: std_logic_vector(address_size-1 downto 0) := (others=>'0');
 	signal empty, full : std_logic;
 	signal input, output : std_logic_vector(data_size-1 downto 0);
 	
@@ -60,7 +61,7 @@ begin
 		we1   => '1',
 		we2   => '0',
 		addr1 => address,
-		addr2 => address,
+		addr2 => address2,
 		data1 => input,
 		data2 => output
 		);		
@@ -72,6 +73,7 @@ begin
 	empty <= '1' when to_integer(unsigned(address)) = 0 else '0';
 	full  <= '1' when to_integer(unsigned(not address)) = 0 else '0';
 	
+	address2 <= address -1;
 	data_out <= output ;	
 	input  <= data_in when en = '1' else (others=>'Z');	
 	
@@ -83,14 +85,16 @@ begin
 		
 		if reset = '1' then 
 			address <= (others=> '0');
-		elsif falling_edge(clk) then	
+		elsif rising_edge(clk) then	
 			if en = '1' then
 				address <= address;
 				if push = '1' and full = '0' then
 					address <= std_logic_vector(unsigned(address)+1);  
 				end if;
+				
 				if pop = '1' and empty = '0' then 				 
 					address <= std_logic_vector(unsigned(address)-1);
+					--data_out <= output ;	
 			
 					
 				end if;	 
