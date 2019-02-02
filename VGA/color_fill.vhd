@@ -159,6 +159,7 @@ architecture Behavioral of color_fill is
 	
 	signal score1, score2 : integer  := 0;
 	signal last_key : std_LOGIC_VECTOR(3 downto 0) := "1111";
+	signal flag_change_score : std_LOGIC := '1';
 	
 	-- Architecture begin
 	begin
@@ -335,7 +336,7 @@ architecture Behavioral of color_fill is
 												end if;
 												
 
-					when push_origin => 
+					when push_origin => 	flag_change_score <= '1';
 												stack_reset <= '0';
 												stack_enable <= '1';
 												stack_push <= '1';
@@ -420,15 +421,18 @@ architecture Behavioral of color_fill is
 												algo_next_state <= pop_state;
 											else
 												algo_next_state <= idle_state;
-												score1 <= score1 +1;
-												if score1 = 9 then
-													score2 <= score2 +1;
-													score1 <= 0;
-												end if;
-												
-												if score2 = 10 then 
-													score2 <= 0;
-													score1 <= 0;
+												if flag_change_score = '1' then
+													flag_change_score <= '0';
+													score1 <= score1 +1;
+													if score1 = 9 then
+														score2 <= score2 +1;
+														score1 <= 0;
+													end if;
+													
+													if score2 = 10 then 
+														score2 <= 0;
+														score1 <= 0;
+													end if;
 												end if;
 												
 											end if;
@@ -465,21 +469,7 @@ architecture Behavioral of color_fill is
 		
 		
 		
-	process(Clk_50MHz, RESET)
-	begin
 	
-		if RESET = '1' then
-			key_delay <= 0;
-		elsif rising_edge(CLK_50MHz) then
-			key_delay <= key_delay +1;
-			
-			if key_delay > 160000000 then
-				key_delay <= 0;
-			end if;
-		end if;
-	
-	end process;
-		
 		--------- 7Segment Show ------------
 	 Process(CLK_50MHz, RESET)
 	 begin
@@ -491,7 +481,7 @@ architecture Behavioral of color_fill is
 		elsif (rising_edge(CLK_50MHz)) then
 			if timer_stop = '0' then
 				
-				if counter > 50000000 then
+				if counter > 381 then
 					counter <= 0;
 					counter_1 <= counter_1 + 1;
 					
